@@ -1,0 +1,121 @@
+✅ Scenario 3: Deploy FusionDirector (for Huawei Cloud Shell)
+✅ Goal
+Simulate installing and launching FusionDirector using scripts, and create a data partition or directory to store logs and packages.
+
+🧰 What You’ll Do in Huawei Cloud Shell
+Task	Description
+1	Create a simulated data partition (as Cloud Shell has no disk partitioning privileges).
+2	Simulate autoDeploytool.sh script execution.
+3	Check that microservices “start.”
+4	Simulate logging into FusionDirector.
+
+🔽 Step-by-Step Instructions
+🔹 Step 1: Start Huawei Cloud Shell
+Open Huawei Cloud Console
+
+Log in.
+
+Click the “Cloud Shell” icon at the top right.
+
+Wait for the terminal to load.
+
+✅ You are now in a Linux command-line environment.
+
+🔹 Step 2: Update Your Cloud Shell Environment
+Always start by updating your environment:
+sudo apt update && sudo apt upgrade -y
+
+🔹 Step 3: Create a Data Partition (Simulated)
+FusionDirector needs a data partition of at least 100 GB. Since Cloud Shell doesn't allow actual disk partitioning, we simulate this with a folder:
+
+mkdir ~/fusion_data
+
+
+du -sh ~/fusion_data
+
+4.0K    /home/HUAWEI_USER/fusion_data
+
+ Step 4: Create the autoDeploytool.sh Script
+FusionDirector uses a script to configure IPs and start services.
+
+Open Nano editor:
+
+
+nano autoDeploytool.sh
+
+
+#!/bin/bash
+echo "Step 1: Configuring network adapter IP addresses..."
+sleep 2
+echo "IP configuration done."
+
+echo "Step 2: Preparing data disk..."
+sleep 2
+echo "Data disk mounted at ~/fusion_data"
+
+echo "Step 3: Starting FusionDirector microservices..."
+sleep 3
+echo "✔️ All microservices started successfully!"
+
+Save and exit:
+
+Press Ctrl + O (to save)
+
+Press Enter (to confirm)
+
+Press Ctrl + X (to exit)
+
+🔹 Step 5: Run the Script
+Make the script executable:
+
+
+
+
+chmod +x autoDeploytool.sh
+
+
+Now run it:
+./autoDeploytool.sh
+
+
+
+You’ll see simulated output like:
+
+Step 1: Configuring network adapter IP addresses...
+IP configuration done.
+Step 2: Preparing data disk...
+Data disk mounted at ~/fusion_data
+Step 3: Starting FusionDirector microservices...
+✔️ All microservices started successfully!
+
+
+
+
+🔹 Step 6: Simulate Accessing FusionDirector UI
+Normally, you would access FusionDirector via a web browser using this format:
+
+
+https://<IP>:port
+
+
+echo "✅ FusionDirector is running. Access it via: https://192.168.1.100:port"
+
+
+You’ve now:
+
+Created a simulated data partition.
+
+Executed the autoDeploytool.sh script.
+
+Simulated FusionDirector startup.
+
+Displayed the login address.
+
+
+Would you like to continue with:
+
+👉 Scenario 4: Using FusionDirector to add and manage devices and deploy OS
+or
+🔁 Repeat Scenario 3 with real disk commands for a real server environment (for practice)?
+
+Let me know!
