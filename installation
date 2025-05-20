@@ -1,0 +1,74 @@
+Great! Since you're using Huawei Cloud, you can install and use the Kunpeng Development Environment on a Huawei Cloud ECS instance that runs a Kunpeng-compatible OS (like openEuler). Below is a full copy-paste ready guide customized for Huawei Cloud ECS and aligned with Huawei's lectures and lab guides.
+
+
+
+📘 Huawei Kunpeng Development Environment Setup (on Huawei Cloud)
+☁️ Platform: Huawei Cloud ECS
+🧱 Architecture: Kunpeng (ARM64)
+🖥 OS: Recommended – openEuler 22.03 LTS SP1
+🧰 Prerequisites
+Huawei Cloud ECS instance with Kunpeng (ARM64) CPU
+
+OS: openEuler (preferably 22.03 LTS SP1)
+
+Root/sudo access
+
+Internet access
+
+
+
+ Step-by-Step Installation (Huawei Official Style)
+
+ # Step 1: Update the openEuler system
+sudo dnf update -y
+
+# Step 2: Add the openEuler repository (in case it's missing)
+sudo dnf config-manager --add-repo https://repo.openeuler.org/openEuler-22.03-LTS-SP1/OS/aarch64/
+
+# Step 3: Install essential development tools
+sudo dnf install -y gcc gcc-c++ gdb make cmake git wget unzip tar
+
+# Step 4: Create a workspace directory
+mkdir -p ~/kunpeng_setup && cd ~/kunpeng_setup
+
+# Step 5: Download Kunpeng DevKit manually from Huawei website
+# Note: Replace the link below with the actual URL you get from https://www.hikunpeng.com
+
+# Example (assuming the RPM link was copied from the DevKit page)
+wget https://your-download-link.com/kunpeng-devkit.rpm
+
+# Step 6: Install Kunpeng DevKit
+sudo dnf install -y ./kunpeng-devkit.rpm
+
+# Step 7: (Optional) Download and install BoostKit (manual)
+# Go to https://www.hikunpeng.com -> BoostKit -> select components (e.g., BoostKit for AI, HPC, etc.)
+# Replace the link with your actual package URL
+
+# Example:
+wget https://your-download-link.com/boostkit-example.rpm
+sudo dnf install -y ./boostkit-example.rpm
+
+# Step 8: Check if compilers and tools are correctly installed
+gcc -v
+g++ -v
+cmake --version
+gdb --version
+
+# Step 9: Compile and run a test C++ file to confirm everything is working
+mkdir ~/kunpeng_test && cd ~/kunpeng_test
+echo '#include <iostream>' > main.cpp
+echo 'int main() { std::cout << "Kunpeng Environment Ready!" << std::endl; return 0; }' >> main.cpp
+g++ main.cpp -o test_kunpeng
+./test_kunpeng
+
+
+
+📌 Important Notes:
+🔗 You must visit https://www.hikunpeng.com and register/login to get the real .rpm download links for DevKit and BoostKit.
+
+🧑‍💻 This script assumes you're using openEuler on Kunpeng inside Huawei Cloud ECS.
+
+🛠 All installations are done via terminal – no GUI is needed.
+
+Let me know if you'd like this saved as a file or shared in script form (.sh)!
+
